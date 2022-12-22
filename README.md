@@ -24,6 +24,7 @@ $ systemctl enable cron
 ### Configure output data:   
 > https://docs.aws.amazon.com/cli/index.html   
 > https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html   
+
 The SIEM solution I currently use is collecting data from a BucketS3, so an AWS key pair is needed to send the logs to a BucketS3.  
 * AWS CLI - Configure profile:  
 ```bash
