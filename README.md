@@ -9,7 +9,7 @@ I strongly recommend that you purchase this product to collect the logs more eff
 ## Preparing the Environment  
 For continuous execution of the **logsteam** I use a **cron job** scheduled with **crontab**, it runs the **logsteam** every ```X``` minutes which collects the logs in the Gocache every ```Y,Z``` time range.  
 ### Configure cron:   
-> https://crontab.guru/#*/5_*_*_*_*   
+> [crontab.guru](https://crontab.guru/#*/5_*_*_*_*)   
 ```bash
 $ crontab -e
 ```
