@@ -40,9 +40,7 @@ def getdomains():
 ###--> CREATE TIMESTAMPS FOR REQUESTS
 def gettimestamp():
 
-    global startdate
-    global enddate
-    global id_output
+    global startdate, enddate
 
     enddate = datetime.now().date().strftime('%m/%d/%y '+str(datetime.now().time()).split('.')[0])
     enddate = str(datetime.strptime(enddate, '%m/%d/%y %H:%M:%S').timestamp()).split('.')[0]
@@ -50,8 +48,13 @@ def gettimestamp():
     startdate = str(int(enddate)-600) ####--> REMOVE 15 MIN FOR START DATE
     #print("Data de inicio:",startdate) ####--> FOR DEBUG
     #print("Date de fim:",enddate) ####--> FOR DEBUG
-    try:    ####--> CREATE OUTPUT IDs DB
+ 
+    try:    ####--> CREATE DIR OUTPUT IDs DB
         os.makedirs(os.path.dirname(path_status))
+    except:
+        pass
+
+    try:    ####--> CREATE FILE OUTPUT IDs DB
         id_output = open(path_status+'IDs_output.txt','a')
         id_output.close()
     except:
