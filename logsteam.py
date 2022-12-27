@@ -25,7 +25,7 @@ def getdomains():
 
     global domains
 
-    headers = {'Accept': 'application/json','GoCache-Token': api_token}
+    headers = {'Accept': 'application/json','GoCache-Token': api_token, 'User-Agent': user_agent}
     response = requests.request(method='GET', url=url+"domain", headers=headers)
     decodedResponse = json.loads(response.text)
 
