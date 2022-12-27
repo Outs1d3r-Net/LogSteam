@@ -10,6 +10,7 @@ import os
 
 ##--> VARIABLES
 url = 'https://api.gocache.com.br/v1/' ###--> URL API END POINT
+user_agent = 'LogSteam/1.0 (compatible; Logsteam/v1.0; https://github.com/Outs1d3r-Net/LogSteam)'
 api_token = 'API_TOKEN_HERE' ###--> API TOKEN GOCACHE: <user_name>
 limdata = '1000' ###--> QTT OF EVENTS
 path_output = '/opt/API/GOCACHE/' ###--> PATH FOR OUTPUT DATA 
@@ -64,7 +65,7 @@ def gettimestamp():
 def getfirewalldata():
     for domain in range(len(domains)): ####--> SCROLL ALL DOMAINS
         param = {'offset':'0', 'limit':limdata, 'start_date':startdate, 'end_date':enddate}
-        headers = {'Accept': 'application/json','GoCache-Token': api_token}
+        headers = {'Accept': 'application/json','GoCache-Token': api_token,'User-Agent': user_agent}
         response = requests.request(method='GET', url=url+"firewall/event/"+str(domains[domain]), params=param, headers=headers)
         decodedResponse = json.loads(response.text)
 
@@ -88,7 +89,7 @@ def getfirewalldata():
                     with open(path_status+'IDs_output.txt') as ver:
                         if not eventID in ver.read():
                             param = {'timestamp':eventTSTAMP}
-                            headers = {'Accept': 'application/json','GoCache-Token': api_token}
+                            headers = {'Accept': 'application/json','GoCache-Token': api_token,'User-Agent': user_agent}
                             response = requests.request(method='GET', url=url+"firewall/event/"+str(domains[domain])+"/"+eventID, params=param, headers=headers)
                             decodedResponseEvent = json.loads(response.text)
 
